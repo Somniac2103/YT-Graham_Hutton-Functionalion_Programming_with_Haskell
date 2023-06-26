@@ -5,7 +5,7 @@ List of Char
 
 ('a','b', 'c')
 Tuple of Char 
-(Tuple)
+(Char, Char, Char)
 
 [(False,'0'),(True,'1')]
 List of Tuples with Bool and Char values 
@@ -17,4 +17,4 @@ Tuple of List of Bools and Char
 
 [tail,init, reverse]
 List of functions
-[->]
+[[a]->[a]]
