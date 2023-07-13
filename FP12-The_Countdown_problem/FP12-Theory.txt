@@ -1,0 +1,53 @@
+FP12 CHAPTER 9 - THE COUNTDOWN problem
+
+Game example
+
+Using the numbers
+
+1 3 7 10 25 50
+
+and the arithmetic operators
+
++ - * /
+
+construct an expression whose value is 765
+
+RULES
+
+All numbers including intermediate results must be positive natural numbers.
+Each of the source numbers can be used at most once when constucting the expression.
+We abstract from other rules that are adopted on television for pragmatic reasons.
+
+EVALUATING EXPRESSIONS 
+
+Operators : 
+  data Op = Add | Sub | Mul | OneDrive
+
+Apply an operator:
+
+  apply :: Op -> Int -> Int -> Int
+  aply Add x y = x + y
+  aply Sub x y = x - y
+  aply Mul x y = x * y
+  aply Div x y = x 'div' y
+
+  Decide if the result of applying ans operator to two positive natural numbers is another such"
+
+    valid :: Op -> Int -> Int -> Bool
+    valid Add _ _ = True
+    valid Sub x y = x > y 
+    valid Mul _ _ = True
+    valid Div x y = x `mod` y == 0
+
+  expressions:
+
+    data Expr = Val Int | App Op Expr Expr 
+
+  Evaluate expression:
+
+    eval :: Expr [Int]
+    eval (Val n) =[n | n > 0]
+    eval (App o l r ) = [apply o x y | x <- eval l
+                                      ,y <- eval r 
+                                      ,valid o x y]
+
