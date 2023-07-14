@@ -1,0 +1,68 @@
+FP13- INTERACTIVE PROGRAMMING
+CHAPTER 10
+
+Haskell programs are pure math functions
+Haskell has no side effects
+Interactive programs have side effects
+
+Use type system to keep the pure section(Function) seperate from the unpure section(interactive)
+
+IO a 
+
+Type of action that return a value of type a 
+
+IO Char *Type of Actions that return a character.
+
+IO () *Type of purely side effecting actions that return no result value.
+
+BASIC ACTIONS 
+
+Standard library provides three primitives:
+
+getChar :: IO Char
+putChar :: Char -> IO()
+return :: a -> IO a 
+
+SEQUENCING
+
+act :: IO (Char,Char)
+
+act = do  x <- getChar
+          getChar
+          y <- getChar
+          return (x,y)
+
+
+DERIVED PRIMITIVES 
+
+*Read a string from the keyboard
+
+getLine :: IO string
+getLine = do  x <- getChar
+              if x == '\n' then
+                return[]
+              else
+                do xs <-getLine
+                  return (x:xs)
+
+*Writing a string to the screen
+
+putStr :: String -> IO ()
+putStr []     = retunr()
+putStr (x:xs) = do  putChar x 
+                    putStr xs
+
+*Writing a string and moving to a new getLine
+
+putStrLn :: String -> IO ()
+PutStrLn xs = do  putStr xs
+                  putChar '\n'
+
+Example
+
+strlen :: IO ()
+strlen = do putStr "Enter a string: "
+            xs <- getLine
+            putStr " The string has "
+            putStr (show (length xs))
+            putStrln " characters

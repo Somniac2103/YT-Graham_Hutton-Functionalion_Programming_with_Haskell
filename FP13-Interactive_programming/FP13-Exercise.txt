@@ -1,0 +1,9 @@
+FP13 EXERCISES
+
+HANGMAN
+
+Rules:
+  One player secretly types in a word
+  The other player tries to deduce the word, by entering a sequence of guesses
+  For each guess, the computer imdicates which letters in the secret word occur in the guess.
+  
