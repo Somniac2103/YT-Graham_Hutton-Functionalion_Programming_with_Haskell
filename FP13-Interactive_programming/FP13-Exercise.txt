@@ -1,9 +1,10 @@
 FP13 EXERCISES
 
-HANGMAN
+Implement the game of nim in Haskell where the rules of the game are as follows:
 
-Rules:
-  One player secretly types in a word
-  The other player tries to deduce the word, by entering a sequence of guesses
-  For each guess, the computer imdicates which letters in the secret word occur in the guess.
-  
+The board compriese five rows of stars:
+1: *****
+2: ****
+3: ***
+4: **
+5: *
