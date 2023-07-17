@@ -1,0 +1,48 @@
+FP14 LAZY EVALUATION
+
+Expressions in Haskell are evaluated using a simple tehnique called lazy evaluation which:
+  Avoids doing unnecesary evaluation
+  Ensures termination whenever possible
+  Supports programming with infinite lists
+  Allows programs to be more modular
+
+Evaluating Expressions
+----------------------
+
+square n - n*n
+
+Example:
+
+square (1+2) :can apply +
+square 3 :remove the function
+3*3  : *remove multiplication
+9
+
+any way evaluation the same expression will give the same results provided it terminates.
+
+Evaluation Strategies
+
+-two main strategies for deciding which reducible expression (redex) to consider, innermost or outermost
+
+lazy evaluation = outermost evaulation + sharing arguments.
+
+Modular programming
+-------------------
+Lazy evaulation allows us to make programs more modular by separating control and data
+
+Generating Primes
+-----------------
+
+to generate the infinite sequence of Primes
+
+1. Write down the infinite sequence 2,3,4,...;
+2. Mark the first number p as being prime 
+3. Delet all multiples of p from the sequence
+4. Return to the second step
+
+primes = sieve [2..]
+
+sieve (p:xs) = p : sieve [ x | x<-xs, mod xp /= 0]
+
+
+
